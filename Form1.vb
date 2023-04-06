@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms.VisualStyles
 Public Class Form1
     Private Sub btnPlay_Click(sender As Object, e As EventArgs) Handles btnPlay.Click
+        ' Variables
         Dim p1card As Integer
         Dim p2card As Integer
         p1card = Int(52 * Rnd()) + 1
@@ -9,6 +10,7 @@ Public Class Form1
         Loop untilk p1card <> p2card 
         lblP1Card.Text = p1card
         lblP2Card.Text = p2card
+        ' Update pictureBox
         picP1Card.ImageLocation = "card graphics\" & getCardName(p1card) & ".png"
         picP2Card.ImageLocation = "card graphics\" & getCardName(p2card) & ".png"
         If snapDetect(p1card, p2card) = True Then
@@ -18,6 +20,7 @@ Public Class Form1
     Private Function getCardName(cardNum) As String
         Dim result As String
         Select Case cardNum
+            ' The best way to generate code like this is MS Excel.
             Case 1 : result = "ad"
             Case 2 : result = "2d"
             Case 3 : result = "3d"
@@ -75,6 +78,7 @@ Public Class Form1
     End Function
 
     Private Function snapDetect(p1card As Integer, p2card As Integer) As Boolean
+        ' Check for Snap
         Dim result As Boolean
         If p1card Mod 13 = p2card Mod 13 Then
             result = True
